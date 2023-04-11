@@ -46,7 +46,11 @@ addButton.addEventListener('click', (e) => {
     numOfPagesField.value
   );
 
-  odinLibrary.push(book);
+  if (titleField.value && authorField.value && numOfPagesField.value) {
+    odinLibrary.push(book);
+  } else {
+    return;
+  }
 
   titleField.value = '';
   authorField.value = '';
