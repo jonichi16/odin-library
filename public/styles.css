@@ -1,3 +1,118 @@
-html {
-  background-color: #000;
+body {
+  background-color: #15253f;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+}
+
+.container {
+  width: 90%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.logo {
+  padding-top: 1em;
+  padding-bottom: 0.5em;
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.hide {
+  display: none;
+}
+
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1em;
+  margin-bottom: 2em;
+}
+
+.list-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+#add-new-book-button {
+  cursor: pointer;
+}
+
+.new-book-btn {
+  display: none;
+  padding: 0.5em 1em;
+  border: 2px solid white;
+  border-radius: 8px;
+}
+
+.new-book-btn:hover {
+  opacity: 0.8;
+}
+
+.card {
+  width: 100%;
+  background-color: white;
+  color: black;
+  padding: 2em 1em;
+  text-align: center;
+  font-size: 0.875rem;
+  border-radius: 5px;
+}
+
+.bookTitle {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.bookPages {
+  margin-top: 1em;
+}
+
+#books-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1em;
+}
+
+@media screen and (min-width: 570px) {
+  .logo {
+    font-size: 3rem;
+  }
+
+  #books-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .card {
+    padding: 2.5em 1em;
+  }
+
+  .new-book-img {
+    display: none;
+  }
+
+  .new-book-btn {
+    display: block;
+  }
+
+  .list-title {
+    font-size: 1.5rem;
+  }
+
+  .bookTitle {
+    font-size: 1.25rem;
+  }
+
+  .bookAuthor,
+  .bookPages {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  #books-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }

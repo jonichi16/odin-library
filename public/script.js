@@ -13,7 +13,9 @@ const titleField = document.querySelector('#title');
 const authorField = document.querySelector('#author');
 const numOfPagesField = document.querySelector('#pages');
 const addButton = document.querySelector('#add-button');
-const bookList = document.querySelector('#book-list');
+const booksList = document.querySelector('#books-list');
+const addNewBookButton = document.querySelector('#add-new-book-button');
+const bookForm = document.querySelector('#book-form');
 
 const createBookCard = (book) => {
   const card = document.createElement('div');
@@ -28,11 +30,11 @@ const createBookCard = (book) => {
 
   bookTitle.textContent = book.title;
   bookAuthor.textContent = book.author;
-  bookPages.textContent = book.numOfPages;
+  bookPages.textContent = `Number of pages: ${book.numOfPages}`;
 
   card.append(bookTitle, bookAuthor, bookPages);
 
-  bookList.appendChild(card);
+  booksList.appendChild(card);
 };
 
 addButton.addEventListener('click', (e) => {
@@ -51,6 +53,13 @@ addButton.addEventListener('click', (e) => {
   numOfPagesField.value = '';
 
   createBookCard(book);
+  bookForm.classList.add('hide');
+});
+
+addNewBookButton.addEventListener('click', (e) => {
+  e.preventDefault();
+
+  bookForm.classList.remove('hide');
 });
 
 odinLibrary.forEach((book) => {
