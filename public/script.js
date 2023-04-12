@@ -60,10 +60,20 @@ addButton.addEventListener('click', (e) => {
   bookForm.classList.add('hide');
 });
 
+// * To show and hide bookForm
 addNewBookButton.addEventListener('click', (e) => {
   e.preventDefault();
 
-  bookForm.classList.remove('hide');
+  bookForm.classList.toggle('hide');
+});
+
+// * To close bookForm when clicked outside form
+document.addEventListener('click', (e) => {
+  if (!e.target.classList.contains('new-book-btn')) {
+    if (!bookForm.contains(e.target)) {
+      bookForm.classList.add('hide');
+    }
+  }
 });
 
 odinLibrary.forEach((book) => {
