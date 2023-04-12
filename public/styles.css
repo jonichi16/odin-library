@@ -5,6 +5,8 @@ body {
 }
 
 .container {
+  position: relative;
+  min-height: 100vh;
   width: 90%;
   max-width: 800px;
   margin: 0 auto;
@@ -76,9 +78,58 @@ body {
   gap: 1em;
 }
 
+#book-form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 500px;
+  background-color: #fff;
+  padding: 2em 1em;
+  color: black;
+  border-radius: 5px;
+  border: 3px solid black;
+}
+
+.field {
+  margin-bottom: 1em;
+}
+
+input {
+  width: 100%;
+  padding: 0.5em;
+}
+
+input:focus-within {
+  border-color: #15253f;
+}
+
+label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 0.5em;
+}
+
+.btn {
+  width: 100%;
+  padding: 0.25em 0;
+  background-color: #15253f;
+  color: white;
+  border-radius: 5px;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
 @media screen and (min-width: 570px) {
   .logo {
     font-size: 3rem;
+  }
+
+  #book-form {
+    padding: 3em 2em;
   }
 
   #books-list {
