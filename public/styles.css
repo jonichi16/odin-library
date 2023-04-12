@@ -123,6 +123,22 @@ label {
   opacity: 0.9;
 }
 
+.field:last-of-type {
+  width: 100%;
+  display: flex;
+  gap: 1em;
+  align-items: center;
+}
+
+label:last-of-type {
+  margin-bottom: 0;
+}
+
+.checkbox {
+  width: 16px;
+  height: 16px;
+}
+
 @media screen and (min-width: 570px) {
   .logo {
     font-size: 3rem;
