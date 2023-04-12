@@ -41,6 +41,13 @@ const createBookCard = (book) => {
   booksList.appendChild(card);
 };
 
+const clearField = () => {
+  titleField.value = '';
+  authorField.value = '';
+  numOfPagesField.value = '';
+  statusField.checked = false;
+};
+
 addButton.addEventListener('click', (e) => {
   e.preventDefault();
 
@@ -57,9 +64,7 @@ addButton.addEventListener('click', (e) => {
     return;
   }
 
-  titleField.value = '';
-  authorField.value = '';
-  numOfPagesField.value = '';
+  clearField();
 
   createBookCard(book);
   bookForm.classList.add('hide');
@@ -70,6 +75,8 @@ addNewBookButton.addEventListener('click', (e) => {
   e.preventDefault();
 
   bookForm.classList.toggle('hide');
+
+  clearField();
 });
 
 // * To close bookForm when clicked outside form
