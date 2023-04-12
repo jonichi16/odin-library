@@ -1,17 +1,21 @@
 const odinLibrary = [];
 
-function Book(title, author, numOfPages) {
+function Book(title, author, numOfPages, status) {
   this.title = title;
   this.author = author;
   this.numOfPages = numOfPages;
+  this.status = status;
 }
 
-odinLibrary.push(new Book('The Alchemist', 'Paulo Coelho', '167'));
-odinLibrary.push(new Book('The Great Gatsby', 'F. Scott Fitzgerald', '184'));
+odinLibrary.push(new Book('The Alchemist', 'Paulo Coelho', '167', false));
+odinLibrary.push(
+  new Book('The Great Gatsby', 'F. Scott Fitzgerald', '184', false)
+);
 
 const titleField = document.querySelector('#title');
 const authorField = document.querySelector('#author');
 const numOfPagesField = document.querySelector('#pages');
+const statusField = document.querySelector('#status');
 const addButton = document.querySelector('#add-button');
 const booksList = document.querySelector('#books-list');
 const addNewBookButton = document.querySelector('#add-new-book-button');
@@ -43,7 +47,8 @@ addButton.addEventListener('click', (e) => {
   const book = new Book(
     titleField.value,
     authorField.value,
-    numOfPagesField.value
+    numOfPagesField.value,
+    statusField.checked
   );
 
   if (titleField.value && authorField.value && numOfPagesField.value) {
