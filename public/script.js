@@ -7,7 +7,7 @@ function Book(title, author, numOfPages, status) {
   this.status = status;
 }
 
-odinLibrary.push(new Book('The Alchemist', 'Paulo Coelho', '167', false));
+odinLibrary.push(new Book('The Alchemist', 'Paulo Coelho', '167', true));
 odinLibrary.push(
   new Book('The Great Gatsby', 'F. Scott Fitzgerald', '184', false)
 );
@@ -26,17 +26,20 @@ const createBookCard = (book) => {
   const bookTitle = document.createElement('h3');
   const bookAuthor = document.createElement('h4');
   const bookPages = document.createElement('p');
+  const bookStatus = document.createElement('p');
 
   card.classList.add('card');
   bookTitle.classList.add('bookTitle');
   bookAuthor.classList.add('bookAuthor');
   bookPages.classList.add('bookPages');
+  bookStatus.classList.add('bookStatus');
 
   bookTitle.textContent = book.title;
   bookAuthor.textContent = book.author;
   bookPages.textContent = `Number of pages: ${book.numOfPages}`;
+  bookStatus.textContent = book.status ? 'Status: Read' : 'Status: Not Read';
 
-  card.append(bookTitle, bookAuthor, bookPages);
+  card.append(bookTitle, bookAuthor, bookPages, bookStatus);
 
   booksList.appendChild(card);
 };
@@ -81,7 +84,7 @@ addNewBookButton.addEventListener('click', (e) => {
 
 // * To close bookForm when clicked outside form
 document.addEventListener('click', (e) => {
-  if (!e.target.classList.contains('new-book-btn')) {
+  if (!e.target.classList.contains('show-form')) {
     if (!bookForm.contains(e.target)) {
       bookForm.classList.add('hide');
     }
