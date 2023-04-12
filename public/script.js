@@ -41,7 +41,7 @@ const createBookCard = (book) => {
 
   card.append(bookTitle, bookAuthor, bookPages, bookStatus);
 
-  booksList.appendChild(card);
+  return card;
 };
 
 const clearField = () => {
@@ -69,7 +69,7 @@ addButton.addEventListener('click', (e) => {
 
   clearField();
 
-  createBookCard(book);
+  booksList.appendChild(createBookCard(book));
   bookForm.classList.add('hide');
 });
 
@@ -92,5 +92,5 @@ document.addEventListener('click', (e) => {
 });
 
 odinLibrary.forEach((book) => {
-  createBookCard(book);
+  booksList.appendChild(createBookCard(book));
 });
