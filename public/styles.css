@@ -72,16 +72,30 @@ body {
   margin-top: 1em;
 }
 
-.book-delete-btn {
+.book-status-btn {
   width: 100%;
   margin-top: 1em;
   background-color: #15253f;
   color: white;
   padding: 0.25em 0;
+  font-weight: 700;
+  border: none;
   border-radius: 5px;
 }
 
-.book-delete-btn:hover {
+.book-delete-btn {
+  width: 100%;
+  margin-top: 0.25em;
+  background-color: #ef4444;
+  color: white;
+  padding: 0.25em 0;
+  font-weight: 700;
+  border: none;
+  border-radius: 5px;
+}
+
+.book-delete-btn:hover,
+.book-status-btn:hover {
   opacity: 0.9;
 }
 

@@ -7,6 +7,10 @@ function Book(title, author, numOfPages, status) {
   this.status = status;
 }
 
+Book.prototype.changeStatus = function () {
+  this.status = !this.status;
+};
+
 odinLibrary.push(new Book('The Alchemist', 'Paulo Coelho', '167', true));
 odinLibrary.push(
   new Book('The Great Gatsby', 'F. Scott Fitzgerald', '184', false)
@@ -27,6 +31,7 @@ const createBookCard = (book) => {
   const bookAuthor = document.createElement('h4');
   const bookPages = document.createElement('p');
   const bookStatus = document.createElement('p');
+  const bookStatusChange = document.createElement('button');
   const bookDeleteButton = document.createElement('button');
 
   card.id = `card-${odinLibrary.indexOf(book)}`;
@@ -35,6 +40,7 @@ const createBookCard = (book) => {
   bookAuthor.classList.add('book-author');
   bookPages.classList.add('book-pages');
   bookStatus.classList.add('book-status');
+  bookStatusChange.classList.add('book-status-btn');
   bookDeleteButton.classList.add('book-delete-btn');
 
   bookDeleteButton.setAttribute('data-index', odinLibrary.indexOf(book));
@@ -43,9 +49,17 @@ const createBookCard = (book) => {
   bookAuthor.textContent = book.author;
   bookPages.textContent = `Number of pages: ${book.numOfPages}`;
   bookStatus.textContent = book.status ? 'Status: Read' : 'Status: Not Read';
+  bookStatusChange.textContent = 'Change Status';
   bookDeleteButton.textContent = 'Delete';
 
-  card.append(bookTitle, bookAuthor, bookPages, bookStatus, bookDeleteButton);
+  card.append(
+    bookTitle,
+    bookAuthor,
+    bookPages,
+    bookStatus,
+    bookStatusChange,
+    bookDeleteButton
+  );
 
   bookDeleteButton.setAttribute('data-index', odinLibrary.indexOf(book));
 
@@ -57,6 +71,15 @@ const createBookCard = (book) => {
 
     odinLibrary.splice(index, 1);
     cardToRemove.remove();
+  });
+
+  bookStatusChange.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    book.changeStatus();
+    bookStatus.textContent = book.status ? 'Status: Read' : 'Status: Not Read';
+
+    console.log(book.status);
   });
 
   return card;
