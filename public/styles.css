@@ -63,13 +63,26 @@ body {
   border-radius: 5px;
 }
 
-.bookTitle {
+.book-title {
   font-size: 1rem;
   font-weight: 700;
 }
 
-.bookPages {
+.book-pages {
   margin-top: 1em;
+}
+
+.book-delete-btn {
+  width: 100%;
+  margin-top: 1em;
+  background-color: #15253f;
+  color: white;
+  padding: 0.25em 0;
+  border-radius: 5px;
+}
+
+.book-delete-btn:hover {
+  opacity: 0.9;
 }
 
 #books-list {
@@ -168,12 +181,12 @@ label:last-of-type {
     font-size: 1.5rem;
   }
 
-  .bookTitle {
+  .book-title {
     font-size: 1.25rem;
   }
 
-  .bookAuthor,
-  .bookPages {
+  .book-author,
+  .book-pages {
     font-size: 1rem;
   }
 }

@@ -12,6 +12,7 @@ odinLibrary.push(
   new Book('The Great Gatsby', 'F. Scott Fitzgerald', '184', false)
 );
 
+const bookForm = document.querySelector('#book-form');
 const titleField = document.querySelector('#title');
 const authorField = document.querySelector('#author');
 const numOfPagesField = document.querySelector('#pages');
@@ -19,7 +20,6 @@ const statusField = document.querySelector('#status');
 const addButton = document.querySelector('#add-button');
 const booksList = document.querySelector('#books-list');
 const addNewBookButton = document.querySelector('#add-new-book-button');
-const bookForm = document.querySelector('#book-form');
 
 const createBookCard = (book) => {
   const card = document.createElement('div');
@@ -27,19 +27,37 @@ const createBookCard = (book) => {
   const bookAuthor = document.createElement('h4');
   const bookPages = document.createElement('p');
   const bookStatus = document.createElement('p');
+  const bookDeleteButton = document.createElement('button');
 
+  card.id = `card-${odinLibrary.indexOf(book)}`;
   card.classList.add('card');
-  bookTitle.classList.add('bookTitle');
-  bookAuthor.classList.add('bookAuthor');
-  bookPages.classList.add('bookPages');
-  bookStatus.classList.add('bookStatus');
+  bookTitle.classList.add('book-title');
+  bookAuthor.classList.add('book-author');
+  bookPages.classList.add('book-pages');
+  bookStatus.classList.add('book-status');
+  bookDeleteButton.classList.add('book-delete-btn');
+
+  bookDeleteButton.setAttribute('data-index', odinLibrary.indexOf(book));
 
   bookTitle.textContent = book.title;
   bookAuthor.textContent = book.author;
   bookPages.textContent = `Number of pages: ${book.numOfPages}`;
   bookStatus.textContent = book.status ? 'Status: Read' : 'Status: Not Read';
+  bookDeleteButton.textContent = 'Delete';
 
-  card.append(bookTitle, bookAuthor, bookPages, bookStatus);
+  card.append(bookTitle, bookAuthor, bookPages, bookStatus, bookDeleteButton);
+
+  bookDeleteButton.setAttribute('data-index', odinLibrary.indexOf(book));
+
+  bookDeleteButton.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    const index = bookDeleteButton.getAttribute('data-index');
+    const cardToRemove = document.querySelector(`#card-${index}`);
+
+    odinLibrary.splice(index, 1);
+    cardToRemove.remove();
+  });
 
   return card;
 };
@@ -91,6 +109,10 @@ document.addEventListener('click', (e) => {
   }
 });
 
-odinLibrary.forEach((book) => {
-  booksList.appendChild(createBookCard(book));
-});
+const displayBooks = () => {
+  odinLibrary.forEach((book) => {
+    booksList.appendChild(createBookCard(book));
+  });
+};
+
+displayBooks();
